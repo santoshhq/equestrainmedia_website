@@ -160,13 +160,13 @@ def contact_block(dark=False):
 
     return f"""      <div class="split">
         <div>
-          <p class="eyebrow">Request a media plan</p>
+          <p class="eyebrow">Plan your next move</p>
           <h2 class="split__title" data-reveal-lines>
-            {lines('Ready to make', 'your brand', '<span class="red">visible?</span>')}
+            {lines('Let us build', 'your next', '<span class="red">campaign.</span>')}
           </h2>
           <p class="lead u-mt-1">
-            Tell us what you're planning. We'll help you identify the right media and
-            activation opportunity.
+            Tell us your objective, audience and timeline. We will shape the right on-ground media
+            mix around it.
           </p>
 
           <dl class="contact-lines u-mt-3">
@@ -241,7 +241,7 @@ def contact_block(dark=False):
               <p class="field__error" aria-live="polite"></p>
             </div>
             <div class="field field--full">
-              <button class="btn btn--lg btn--block" type="submit" data-cursor="EXPLORE">Request a media plan</button>
+              <button class="btn btn--lg btn--block" type="submit" data-cursor="EXPLORE">Start your campaign</button>
               <p class="form-status" role="status" aria-live="polite" hidden></p>
               <p class="form-note">We reply to campaign briefs within one working day. Prefer to talk?
                 Call <a href="tel:{PHONE_RAW}" class="link-red">{PHONE}</a>.</p>
@@ -1156,8 +1156,8 @@ def build_contact():
         keywords="BTL Marketing Hyderabad, Brand Activation Hyderabad, Outdoor Advertising Hyderabad, "
                  "Brand Promotion Hyderabad",
     ) + header(page) + f"""  <main id="main">
-{page_hero('Contact', ['Ready to make', 'your brand', '<span class="red">visible?</span>'],
-           "Tell us what you're planning. We'll help you identify the right media and activation "
+{page_hero('Contact', ['Put your brand', 'where people', '<span class="red">are.</span>'],
+           "Share your campaign brief and we will connect you with the right media, audience and activation "
            "opportunity.", 'Contact')}
 
   <section class="section">
