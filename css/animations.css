@@ -105,4 +105,6 @@ html:not(.js-anim) .page-curtain { display: none; }
   .rule-red { transform: scaleX(1); }
   .page-curtain { display: none; }
   .step::after { transition: none; width: 100%; }
+  .svc__link::after, .svc__thumb, .svc__title, .svc__arrow { transition: none; }
+  .svc__link:hover .svc__title { transform: none; }
 }

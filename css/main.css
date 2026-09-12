@@ -1372,3 +1372,164 @@ dl, dd { margin: 0; }
 .ticker__arrow { flex: none; color: var(--red); font-size: 0.875rem; line-height: 1; }
 .ticker__sep   { flex: none; color: var(--red); font-size: 0.5rem; line-height: 1; }
 @keyframes ticker-scroll { to { transform: translateX(-50%); } }
+
+/* --------------------------------------------------------------------------
+   28. SERVICES PAGE
+   Editorial service list, deliverable cards, execution timeline, benefits.
+   Own namespace (svc-, deliver, tl, benefit) so the home page's .service
+   rows are untouched.
+   -------------------------------------------------------------------------- */
+.page-services { --sp-sect: clamp(3.5rem, 7vw, 7.5rem); }
+.page-services .section-head { margin-bottom: clamp(2rem, 4vw, 3.5rem); }
+
+/* Hero — typographic; the horse mark is a faint signature, not a photo */
+.page-hero--svc { position: relative; overflow: hidden; }
+.page-hero__mark {
+  position: absolute; right: -4%; top: 50%;
+  width: min(44%, 620px); max-width: none;
+  transform: translateY(-46%);
+  opacity: 0.04; pointer-events: none; z-index: 0;
+}
+.page-hero--svc .wrap { position: relative; z-index: 1; }
+.page-services .cta-final__horse { opacity: 0.07; }
+.page-hero__rule { width: min(100%, 420px); margin-top: clamp(1.75rem, 3vw, 2.5rem); }
+
+/* Service list — editorial navigation rows */
+.svc-list { border-top: 1px solid var(--black); }
+.svc { border-bottom: 1px solid var(--line); scroll-margin-top: calc(var(--header-h) + 1rem); }
+.svc__link {
+  position: relative;
+  display: grid;
+  grid-template-columns: 4.5rem minmax(0, 1fr) 160px 2.75rem;
+  gap: clamp(1rem, 2.5vw, 2.5rem);
+  align-items: center;
+  padding: clamp(1.6rem, 2.6vw, 2.25rem) 0;
+}
+.svc__link::after {
+  content: "";
+  position: absolute; left: 0; bottom: -1px;
+  width: 100%; height: 2px; background: var(--red);
+  transform: scaleX(0); transform-origin: left;
+  transition: transform 0.6s var(--ease);
+}
+.svc__link:hover::after, .svc__link:focus-visible::after { transform: scaleX(1); }
+.svc__num {
+  font-family: var(--font-display);
+  font-size: clamp(1.125rem, 1.5vw, 1.375rem); font-weight: 700;
+  letter-spacing: var(--tr-tight);
+  color: var(--ink-40);
+  transition: color 0.4s var(--ease);
+}
+.svc__link:hover .svc__num, .svc__link:focus-visible .svc__num { color: var(--red); }
+.svc__main { display: block; min-width: 0; }
+.svc__title {
+  font-size: clamp(1.5rem, 2.6vw, 2.5rem);
+  line-height: 1.05; text-transform: uppercase;
+  transition: transform 0.55s var(--ease);
+}
+.svc__link:hover .svc__title, .svc__link:focus-visible .svc__title { transform: translateX(8px); }
+.svc__desc { display: block; margin-top: 0.55rem; max-width: 60ch; font-size: 1rem; color: var(--ink-70); }
+.svc__tags {
+  display: flex; flex-wrap: wrap;
+  margin-top: 0.65rem;
+  font-size: 0.6875rem; font-weight: 800;
+  text-transform: uppercase; letter-spacing: 0.1em;
+  color: var(--ink-55);
+}
+.svc__tags > span + span::before { content: "·"; margin-inline: 0.6rem; color: var(--red); }
+.svc__thumb {
+  display: block; width: 160px; aspect-ratio: 16 / 10;
+  overflow: hidden; justify-self: end;
+  opacity: 0; transform: translateX(12px);
+  transition: opacity 0.45s var(--ease), transform 0.55s var(--ease);
+  pointer-events: none;
+}
+.svc__thumb img { width: 100%; height: 100%; object-fit: cover; }
+.svc__link:hover .svc__thumb, .svc__link:focus-visible .svc__thumb { opacity: 1; transform: translateX(0); }
+.svc__arrow {
+  justify-self: end;
+  width: 44px; height: 44px;
+  display: grid; place-items: center;
+  border: 1px solid var(--line);
+  transition: transform 0.5s var(--ease), background-color 0.5s var(--ease), border-color 0.5s var(--ease), color 0.5s var(--ease);
+}
+.svc__arrow svg { width: 18px; height: 18px; }
+.svc__link:hover .svc__arrow, .svc__link:focus-visible .svc__arrow {
+  background: var(--red); border-color: var(--red); color: var(--white);
+  transform: translate(4px, -4px);
+}
+
+/* What we deliver — bordered cards, typography-led */
+.deliver-grid {
+  display: grid;
+  grid-template-columns: repeat(3, minmax(0, 1fr));
+  gap: clamp(1rem, 1.6vw, 1.5rem);
+}
+.deliver {
+  padding: clamp(1.5rem, 2.2vw, 2rem);
+  background: var(--white);
+  border: 1px solid var(--line);
+  scroll-margin-top: calc(var(--header-h) + 1rem);
+  transition: border-color 0.4s var(--ease);
+}
+.deliver:hover { border-color: var(--black); }
+.deliver__num {
+  display: block;
+  font-family: var(--font-display);
+  font-size: 0.875rem; font-weight: 700; letter-spacing: 0.04em;
+  color: var(--red);
+}
+.deliver__title { margin: 0.9rem 0 1.1rem; font-size: clamp(1.125rem, 1.5vw, 1.375rem); text-transform: uppercase; }
+.deliver .pill-row { gap: 0.4rem; }
+.deliver .pill { padding: 0.4rem 0.7rem; }
+
+.svc-rates { margin-top: clamp(2.5rem, 5vw, 4rem); padding-top: clamp(2rem, 3.5vw, 3rem); border-top: 1px solid var(--line); }
+.svc-rates__head {
+  display: flex; flex-wrap: wrap; align-items: baseline; justify-content: space-between;
+  gap: 0.5rem 2rem; margin-bottom: 1.5rem;
+}
+.svc-rates__head .eyebrow { margin-bottom: 0; }
+.svc-rates__note { max-width: 56ch; font-size: 0.875rem; color: var(--ink-55); }
+
+/* How we execute — horizontal timeline (vertical on mobile, see responsive.css) */
+.tl {
+  display: grid;
+  grid-template-columns: repeat(4, minmax(0, 1fr));
+  gap: clamp(1.5rem, 3vw, 3rem);
+  border-top: 1px solid var(--black);
+}
+.tl__step { position: relative; padding-top: clamp(1.5rem, 2.4vw, 2rem); }
+.tl__step::before {
+  content: "";
+  position: absolute; left: 0; top: -2px;
+  width: 44px; height: 3px; background: var(--red);
+}
+.tl__num {
+  display: block;
+  font-family: var(--font-display);
+  font-size: clamp(2rem, 3.4vw, 3.25rem); font-weight: 700;
+  line-height: 0.9; letter-spacing: var(--tr-tight);
+  color: var(--red);
+}
+.tl__title { margin-top: 1rem; font-size: clamp(1.125rem, 1.5vw, 1.375rem); text-transform: uppercase; }
+.tl__body { margin-top: 0.55rem; font-size: 1rem; color: var(--ink-55); }
+
+/* Why — black grid of benefits */
+.benefits {
+  display: grid;
+  grid-template-columns: repeat(4, minmax(0, 1fr));
+  gap: 1px;
+  background: var(--line-dark);
+  border: 1px solid var(--line-dark);
+}
+.benefit { padding: clamp(1.5rem, 2.4vw, 2.25rem); background: var(--black); }
+.benefit__num {
+  display: block;
+  font-family: var(--font-display);
+  font-size: 0.875rem; font-weight: 700; letter-spacing: 0.04em;
+  color: var(--red);
+}
+.benefit__title { margin: 1.5rem 0 0.7rem; font-size: clamp(1.0625rem, 1.35vw, 1.25rem); text-transform: uppercase; color: var(--white); }
+.benefit__body { font-size: 0.9375rem; color: var(--on-dark-70); }
+
+.cta-final__sub { margin-top: clamp(1.25rem, 2vw, 1.75rem); max-width: 52ch; }
