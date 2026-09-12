@@ -553,7 +553,7 @@ dl, dd { margin: 0; }
 
 .service__inner {
   display: grid;
-  grid-template-columns: 4.5rem minmax(0, 1fr) minmax(0, 1.2fr) 3.5rem;
+  grid-template-columns: 4.5rem minmax(0, 1fr) minmax(0, 1fr) clamp(140px, 13vw, 210px) 3.5rem;
   gap: clamp(1rem, 2.5vw, 2.5rem);
   align-items: center;
   padding: clamp(1.75rem, 3.2vw, 2.9rem) 0;
@@ -593,16 +593,22 @@ dl, dd { margin: 0; }
 }
 .service__arrow svg { width: 18px; height: 18px; }
 
+/* Thumb lives in its own grid lane — reserved width, so it can never sit on the copy */
+.service__figure {
+  display: block; overflow: hidden;
+  align-self: center; justify-self: stretch;
+  pointer-events: none;
+}
 .service__thumb {
-  position: absolute; top: 50%; right: clamp(5rem, 20vw, 20rem);
-  width: clamp(150px, 15vw, 250px);
+  display: block; width: 100%;
   aspect-ratio: 4 / 3;
   object-fit: cover;
-  transform: translateY(-50%) scale(0.82);
-  opacity: 0; pointer-events: none; z-index: 3;
+  transform: scale(1.06);
+  opacity: 0;
   transition: opacity 0.45s var(--ease), transform 0.55s var(--ease);
 }
-.service:hover .service__thumb { opacity: 1; transform: translateY(-50%) scale(1); }
+.service:hover .service__thumb,
+.service:focus-visible .service__thumb { opacity: 1; transform: scale(1); }
 
 /* --------------------------------------------------------------------------
    11. MEDIA / INVENTORY CARDS

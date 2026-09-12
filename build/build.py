@@ -256,13 +256,13 @@ def build_index():
     page = "index.html"
 
     services_rows = "".join(f"""        <a class="service" href="services.html#{slug}" data-cursor="EXPLORE">
-          {img(image, '', cls='service__thumb', sizes='250px')}
           <span class="service__inner wrap">
             <span class="service__num">{num}</span>
             <span class="service__title h3">{title}</span>
             <span class="service__body">{desc}
               <span class="service__tags">{"".join(f'<span>{t}</span>' for t in tags)}</span>
             </span>
+            <span class="service__figure">{img(image, '', cls='service__thumb', sizes='220px')}</span>
             <span class="service__arrow">{icon_arrow_ur()}</span>
           </span>
         </a>""" for num, title, slug, desc, tags, image in SERVICE_PILLARS)
