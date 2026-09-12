@@ -375,55 +375,7 @@
        Page transition curtain
        -------------------------------------------------------------------------- */
     function initPageTransitions() {
-      if (!motionEnabled) return;
-      const curtain = document.querySelector('.page-curtain');
-      if (!curtain) return;
-
-      const { gsap } = window;
-
-      // Lift on arrival.
-      gsap.set(curtain, { scaleY: 1, transformOrigin: 'top' });
-      gsap.to(curtain, {
-        scaleY: 0,
-        duration: 0.75,
-        ease: 'power4.inOut',
-        transformOrigin: 'top',
-        onComplete: () => gsap.set(curtain, { visibility: 'hidden' }),
-      });
-
-      // Drop before leaving for another page in the site.
-      document.addEventListener('click', (e) => {
-        const link = e.target.closest('a');
-        if (!link) return;
-
-        const href = link.getAttribute('href');
-        if (
-          !href ||
-          href.startsWith('#') ||
-          href.startsWith('mailto:') ||
-          href.startsWith('tel:') ||
-          link.target === '_blank' ||
-          link.hasAttribute('download') ||
-          link.hostname !== window.location.hostname
-        ) {
-          return;
-        }
-
-        e.preventDefault();
-        gsap.set(curtain, { visibility: 'visible', transformOrigin: 'bottom' });
-        gsap.fromTo(
-          curtain,
-          { scaleY: 0 },
-          {
-            scaleY: 1,
-            duration: 0.55,
-            ease: 'power4.inOut',
-            onComplete: () => {
-              window.location.href = href;
-            },
-          }
-        );
-      });
+      return;
     }
     __mod.motionEnabled = motionEnabled;
     __mod.initMotion = initMotion;

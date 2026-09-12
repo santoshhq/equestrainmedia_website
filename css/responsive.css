@@ -107,6 +107,8 @@
 
   /* Big readable hero */
   .hero__title { font-size: clamp(2.375rem, 12vw, 3.5rem); }
+  .js-anim .hero__title .line > span { transform: none !important; }
+  .js-anim .page-hero__title .line > span { transform: none !important; }
   .hero__stage { min-height: 0; }
   .hero__visual-wrap { width: 100%; }
   .hero__actions { flex-direction: column; align-items: stretch; }
