@@ -1,0 +1,107 @@
+/* ==========================================================================
+   EQUESTRIAN MEDIA — animations.css
+   Reveal primitives. GSAP drives the timeline; these are the start states
+   plus a no-JS / reduced-motion safety net.
+   ========================================================================== */
+
+/* --------------------------------------------------------------------------
+   1. START STATES
+   Only applied once JS confirms it can animate (html.js-anim), so a
+   scripting failure can never leave content invisible.
+   -------------------------------------------------------------------------- */
+.js-anim [data-reveal] {
+  opacity: 0;
+  transform: translateY(28px);
+  will-change: transform, opacity;
+}
+.js-anim [data-reveal="fade"] { transform: none; }
+.js-anim [data-reveal="left"]  { transform: translateX(-40px); }
+.js-anim [data-reveal="right"] { transform: translateX(40px); }
+.js-anim [data-reveal="scale"] { transform: scale(0.94); }
+
+/* Line-by-line clip reveal for display headings */
+.js-anim [data-reveal-lines] .line > span {
+  transform: translateY(105%);
+  will-change: transform;
+}
+
+/* Image mask reveal — a red curtain wipes off the photograph.
+   The curtain scale lives in a custom property so GSAP can drive a pseudo-element. */
+.reveal-img { position: relative; overflow: hidden; --wipe-scale: 0; }
+.reveal-img::after {
+  content: "";
+  position: absolute; inset: 0;
+  background: var(--red);
+  transform: scaleX(var(--wipe-scale));
+  transform-origin: right;
+  z-index: 2;
+  pointer-events: none;
+}
+.js-anim .reveal-img { --wipe-scale: 1; }
+.js-anim .reveal-img > img { transform: scale(1.14); }
+
+/* --------------------------------------------------------------------------
+   2. CSS-ONLY MICRO MOTION
+   -------------------------------------------------------------------------- */
+/* Red rule that draws itself across a divider */
+@keyframes ruleDraw { from { transform: scaleX(0); } to { transform: scaleX(1); } }
+.rule-red {
+  height: 3px;
+  background: var(--red);
+  transform-origin: left;
+  transform: scaleX(0);
+}
+.rule-red.is-inview { animation: ruleDraw 1s var(--ease) forwards; }
+
+/* Digital-screen scan sweep for the DOOH mock-ups */
+.screen-mock { position: relative; overflow: hidden; }
+.screen-mock::after {
+  content: "";
+  position: absolute; inset: 0;
+  background: linear-gradient(105deg, transparent 42%, rgba(255, 255, 255, 0.28) 50%, transparent 58%);
+  transform: translateX(-120%);
+  animation: scan 5.5s var(--ease-io) infinite;
+  pointer-events: none;
+}
+@keyframes scan { 0%, 60% { transform: translateX(-120%); } 100% { transform: translateX(120%); } }
+
+/* Page transition curtain */
+.page-curtain {
+  position: fixed; inset: 0; z-index: 2500;
+  background: var(--black);
+  transform: scaleY(1); transform-origin: top;
+  pointer-events: none;
+}
+html:not(.js-anim) .page-curtain { display: none; }
+
+/* Counter values hold their box while ticking so the layout never jumps */
+.stat__num, .fact__num { font-variant-numeric: tabular-nums; }
+
+/* --------------------------------------------------------------------------
+   3. REDUCED MOTION
+   Everything resolves to its final, fully visible state.
+   -------------------------------------------------------------------------- */
+@media (prefers-reduced-motion: reduce) {
+  html { scroll-behavior: auto; }
+
+  *, *::before, *::after {
+    animation-duration: 0.001ms !important;
+    animation-iteration-count: 1 !important;
+    transition-duration: 0.001ms !important;
+    scroll-behavior: auto !important;
+  }
+
+  .js-anim [data-reveal],
+  .js-anim [data-reveal-lines] .line > span {
+    opacity: 1 !important;
+    transform: none !important;
+  }
+  .reveal-img::after { display: none; }
+  .js-anim .reveal-img > img { transform: none !important; }
+  .marquee__track { animation: none; }
+  .filmstrip__row { animation: none; }
+  .screen-mock::after { animation: none; opacity: 0; }
+  .rule-red { transform: scaleX(1); }
+  .page-curtain { display: none; }
+  .step::after { transition: none; width: 100%; }
+}
