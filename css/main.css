@@ -237,6 +237,8 @@ dl, dd { margin: 0; }
 .btn--ghost-dark { --btn-bg: transparent; --btn-fg: var(--white); box-shadow: inset 0 0 0 1.5px var(--line-dark); }
 .btn--block      { display: flex; width: 100%; }
 .btn--lg         { padding: 1.25rem 2.4rem; font-size: 0.9375rem; }
+.contact-submit:hover,
+.contact-submit:focus-visible { color: var(--white); }
 
 /* Sized so "Plan your campaign" and "Explore our media" stay side by side in
    the 45% statement column, down to a 1025px viewport. */
