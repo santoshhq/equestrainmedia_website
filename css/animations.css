@@ -99,6 +99,7 @@ html:not(.js-anim) .page-curtain { display: none; }
   .reveal-img::after { display: none; }
   .js-anim .reveal-img > img { transform: none !important; }
   .marquee__track { animation: none; }
+  .ticker__track { animation: none; }
   .filmstrip__row { animation: none; }
   .screen-mock::after { animation: none; opacity: 0; }
   .rule-red { transform: scaleX(1); }

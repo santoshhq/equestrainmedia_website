@@ -310,7 +310,14 @@ dl, dd { margin: 0; }
 .nav__link[aria-current="page"]::after { transform: scaleX(1); }
 
 .header__actions { display: flex; align-items: center; gap: 1rem; flex: none; }
-.header__cta { padding: 0.95rem 1.5rem; }
+.header__cta {
+  --btn-bg: var(--red);
+  --btn-fg: var(--white);
+  padding: 0.95rem 1.5rem;
+}
+.header__cta::after { background: var(--black); }
+.header__cta:hover,
+.header__cta:focus-visible { color: var(--white); }
 .site-header.is-stuck .header__cta { padding: 0.8rem 1.35rem; }
 
 .burger {
@@ -394,6 +401,7 @@ dl, dd { margin: 0; }
   max-width: 46ch;
   margin-top: clamp(1.5rem, 2.5vw, 2.25rem);
   font-size: clamp(1.0625rem, 1.15vw, 1.25rem);
+  word-spacing: -0.02em;
   color: var(--ink-70);
 }
 .hero__actions, .actions {
@@ -881,6 +889,10 @@ dl, dd { margin: 0; }
 .section--dark .step__body { color: var(--on-dark-70); }
 .section--dark .step__num { color: rgba(255, 255, 255, 0.18); }
 
+/* About page — Campaign Process: number + title always in red */
+.process--red .step__num,
+.process--red .step__title { color: var(--red); }
+
 /* --------------------------------------------------------------------------
    16. BRAND MARQUEE
    -------------------------------------------------------------------------- */
@@ -1310,3 +1322,53 @@ dl, dd { margin: 0; }
 .text-sm  { font-size: 0.9375rem; }
 .figure-lead { margin: 0 0 clamp(2rem, 4vw, 3rem); }
 .link-red { font-weight: 700; border-bottom: 2px solid var(--red); }
+
+/* --------------------------------------------------------------------------
+   27. TOP TICKER (home — between header and hero)
+   -------------------------------------------------------------------------- */
+.ticker {
+  width: 100%;
+  height: 36px;
+  overflow: hidden;
+  background: var(--black);
+}
+.ticker__viewport {
+  overflow: hidden;
+  background: var(--black);
+  width: 100%;
+  height: 100%;
+  display: flex;
+  align-items: center;
+}
+.ticker__track {
+  display: flex;
+  align-items: center;
+  width: max-content;
+  min-width: max-content;
+  gap: 0;
+  animation: ticker-scroll 28s linear infinite;
+  will-change: transform;
+}
+@media (hover: hover) and (pointer: fine) {
+  .ticker:hover .ticker__track { animation-play-state: paused; }
+}
+.ticker__group {
+  display: flex;
+  align-items: center;
+  flex: none;
+  gap: 0.8rem;
+  padding-inline: 1.25rem;
+}
+.ticker__item {
+  flex: none;
+  font-family: var(--font-display);
+  font-size: 0.6875rem;
+  font-weight: 700;
+  letter-spacing: 0.1em;
+  text-transform: uppercase;
+  color: var(--white);
+  white-space: nowrap;
+}
+.ticker__arrow { flex: none; color: var(--red); font-size: 0.875rem; line-height: 1; }
+.ticker__sep   { flex: none; color: var(--red); font-size: 0.5rem; line-height: 1; }
+@keyframes ticker-scroll { to { transform: translateX(-50%); } }
