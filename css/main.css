@@ -1151,6 +1151,47 @@ dl, dd { margin: 0; }
 .modal__close:hover { background: var(--red); }
 .modal__close svg { width: 18px; height: 18px; }
 
+.success-modal {
+  position: fixed; inset: 0; z-index: 1300;
+  display: grid; place-items: center;
+  padding: 1.25rem;
+}
+.success-modal[hidden] { display: none; }
+.success-modal__backdrop {
+  position: absolute; inset: 0;
+  background: rgba(0, 0, 0, 0.72);
+}
+.success-modal__panel {
+  position: relative;
+  width: min(500px, 100%);
+  padding: clamp(2rem, 5vw, 3.5rem);
+  background: var(--white);
+  box-shadow: 0 24px 70px rgba(0, 0, 0, 0.28);
+}
+.success-modal__mark {
+  display: block;
+  width: 42px; height: 8px;
+  margin-bottom: 1.75rem;
+  background: var(--red);
+  transform: skewX(-14deg);
+}
+.success-modal__panel .eyebrow { margin-bottom: 0.9rem; }
+.success-modal__panel h2 {
+  margin-bottom: 0.75rem;
+  font-size: clamp(2rem, 5vw, 3rem);
+  text-transform: uppercase;
+}
+.success-modal__panel > p:not(.eyebrow) {
+  max-width: 34ch;
+  color: var(--ink-70);
+}
+.success-modal__close {
+  margin-top: 1.25rem;
+  color: var(--white) !important;
+}
+.success-modal__close:hover,
+.success-modal__close:focus-visible { color: var(--white) !important; }
+
 /* --------------------------------------------------------------------------
    22. CUSTOM CURSOR (desktop, fine pointer only)
    -------------------------------------------------------------------------- */

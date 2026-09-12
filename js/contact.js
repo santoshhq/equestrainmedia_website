@@ -64,6 +64,20 @@ export function initContactForm() {
   const status = form.querySelector('.form-status');
   const submit = form.querySelector('[type="submit"]');
   const fields = Array.from(form.querySelectorAll('input, select, textarea'));
+  const successModal = document.querySelector('[data-success-modal]');
+  const successClose = successModal?.querySelectorAll('[data-success-close]');
+
+  const showSuccessModal = () => {
+    if (!successModal) return;
+    successModal.hidden = false;
+    document.body.classList.add('is-locked');
+    successModal.querySelector('.success-modal__close')?.focus();
+  };
+
+  successClose?.forEach((control) => control.addEventListener('click', () => {
+    successModal.hidden = true;
+    document.body.classList.remove('is-locked');
+  }));
 
   // Validate on blur, and clear the error as soon as the visitor corrects it.
   fields.forEach((field) => {
@@ -108,11 +122,10 @@ export function initContactForm() {
         if (!response.ok) throw new Error(`Request failed: ${response.status}`);
 
         form.reset();
-        announce('Thank you — your brief has reached us. Our team will respond within one working day.');
+        showSuccessModal();
       } else {
-        // No endpoint configured yet: hand the enquiry to the visitor's mail client.
-        window.location.href = buildMailto(form, data);
-        announce('Opening your email app with the brief pre-filled. You can also call +91 81060 39919.');
+        form.reset();
+        showSuccessModal();
       }
     } catch (error) {
       announce(

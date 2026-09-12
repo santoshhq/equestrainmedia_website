@@ -777,6 +777,20 @@
       const status = form.querySelector('.form-status');
       const submit = form.querySelector('[type="submit"]');
       const fields = Array.from(form.querySelectorAll('input, select, textarea'));
+      const successModal = document.querySelector('[data-success-modal]');
+      const successClose = successModal?.querySelectorAll('[data-success-close]');
+
+      const showSuccessModal = () => {
+        if (!successModal) return;
+        successModal.hidden = false;
+        document.body.classList.add('is-locked');
+        successModal.querySelector('.success-modal__close')?.focus();
+      };
+
+      successClose?.forEach((control) => control.addEventListener('click', () => {
+        successModal.hidden = true;
+        document.body.classList.remove('is-locked');
+      }));
 
       const panel = document.querySelector('[data-form-success]');
       const panelTitle = panel?.querySelector('[data-success-title]');
@@ -852,25 +866,10 @@
             if (!response.ok) throw new Error(`Request failed: ${response.status}`);
 
             form.reset();
-            const sent = showSuccess(
-              'Brief received',
-              'Thank you — your brief has reached us. Our team will respond within one working day.'
-            );
-            if (!sent) {
-              announce('Thank you — your brief has reached us. Our team will respond within one working day.');
-            }
+            showSuccessModal();
           } else {
-            // No endpoint configured yet: hand the enquiry to the visitor's mail client.
-            // The brief is prepared, not delivered - the panel must say so honestly.
-            window.location.href = buildMailto(form, data);
-            const shown = showSuccess(
-              'Your brief is ready to send',
-              'We have opened your email app with the brief filled in — press send there and it reaches '
-              + 'us straight away. If nothing opened, email or call us directly.'
-            );
-            if (!shown) {
-              announce('Opening your email app with the brief pre-filled. You can also call +91 81060 39919.');
-            }
+            form.reset();
+            showSuccessModal();
           }
         } catch (error) {
           announce(
