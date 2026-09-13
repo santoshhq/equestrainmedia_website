@@ -1610,3 +1610,102 @@ dl, dd { margin: 0; }
 .faq__item[open] .faq__q::after { transform: rotate(45deg); }
 .faq__a { padding: 0 0 1.5rem; max-width: 68ch; color: var(--ink-70); line-height: 1.6; }
 .faq__a p + p { margin-top: 0.75rem; }
+
+/* --------------------------------------------------------------------------
+   26. BLOG — reading layout: sticky post index + compact photo per post
+   -------------------------------------------------------------------------- */
+.blog { padding-block: clamp(2rem, 4vw, 3.5rem) var(--sp-sect); }
+.blog__grid { display: block; }
+
+/* Index: the shared anchor strip on small screens, bled to the viewport edges */
+.blog .anchor-nav {
+  margin-inline: calc(-1 * var(--gutter));
+  padding-inline: var(--gutter);
+  margin-bottom: clamp(2rem, 4vw, 3rem);
+}
+
+.post {
+  padding-block: clamp(2.75rem, 5vw, 4.5rem);
+  border-top: 1px solid var(--line);
+  scroll-margin-top: calc(var(--header-h) + 4.25rem);
+}
+.post:first-child { padding-top: 0; border-top: 0; }
+.post:last-child { padding-bottom: 0; }
+
+/* Header: meta + title beside a small photo (photo stacks above on phones) */
+.post__head {
+  display: grid;
+  grid-template-columns: minmax(0, 1fr);
+  gap: 1.25rem;
+  align-items: end;
+}
+.post__figure { position: relative; overflow: hidden; margin: 0; }
+.post__figure img { display: block; width: 100%; height: auto; aspect-ratio: 16 / 9; object-fit: cover; }
+.post__figure .feature__tag { padding: 0.45rem 0.75rem; font-size: 0.625rem; }
+
+.post__meta {
+  display: flex; flex-wrap: wrap; gap: 0.35rem 1rem;
+  font-size: var(--fs-small); font-weight: 600; color: var(--ink-55);
+}
+.post__meta span + span { padding-left: 1rem; border-left: 1px solid var(--line); }
+
+.post__title {
+  margin-top: 0.85rem;
+  max-width: 22ch;
+  font-size: clamp(1.5rem, 2.6vw, 2.5rem);
+  line-height: var(--lh-snug); letter-spacing: var(--tr-tight);
+  text-transform: uppercase;
+}
+
+.post__body { max-width: 66ch; margin-top: clamp(1.5rem, 2.4vw, 2rem); }
+.post__body p + p { margin-top: 1.05em; }
+.post__body a {
+  color: var(--black);
+  text-decoration: underline; text-decoration-color: var(--red);
+  text-decoration-thickness: 1.5px; text-underline-offset: 0.2em;
+  transition: color 0.3s var(--ease);
+}
+.post__body a:hover { color: var(--red); }
+
+.post__next-label { margin-top: clamp(1.75rem, 3vw, 2.5rem); font-size: var(--fs-small); font-weight: 600; color: var(--ink-55); }
+.post__next { display: flex; flex-wrap: wrap; gap: 0.9rem 2rem; margin-top: 0.85rem; }
+
+/* Tablet and up: photo sits to the right of the title, fixed at 260px */
+@media (min-width: 768px) {
+  .post__head { grid-template-columns: minmax(0, 1fr) 260px; gap: clamp(1.5rem, 3vw, 2.5rem); }
+  .post__figure img { aspect-ratio: 4 / 3; }
+}
+
+/* Desktop: the index becomes a sticky rail beside a fixed-measure reading column */
+@media (min-width: 1100px) {
+  .blog__grid {
+    display: grid;
+    grid-template-columns: 240px minmax(0, 760px);
+    column-gap: clamp(3rem, 6vw, 6rem);
+    align-items: start;
+  }
+  .blog .anchor-nav {
+    position: sticky; top: calc(var(--header-h) + 1.5rem);
+    margin: 0; padding: 0;
+    background: transparent; border-bottom: 0; overflow: visible;
+  }
+  .blog .anchor-nav__list {
+    flex-direction: column; gap: 0; padding-block: 0;
+    border-top: 1px solid var(--black);
+  }
+  .blog .anchor-nav__list a {
+    display: block; padding: 0.9rem 0 0.9rem 0.85rem;
+    border-bottom: 1px solid var(--line);
+    white-space: normal;
+    font-size: 0.75rem; letter-spacing: 0.08em; line-height: 1.35;
+  }
+  .blog .anchor-nav__list a:hover { color: var(--black); border-bottom-color: var(--line); }
+  .blog .anchor-nav__list a.is-active { color: var(--red); border-bottom-color: var(--line); box-shadow: inset 3px 0 0 var(--red); }
+  .post { scroll-margin-top: calc(var(--header-h) + 1.5rem); }
+}
+
+@media (max-width: 767px) {
+  .post__figure { order: 1; }
+  .post__figure img { max-height: 210px; }
+  .post__next { gap: 0.75rem 1.5rem; }
+}
