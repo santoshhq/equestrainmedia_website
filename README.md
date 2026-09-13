@@ -29,8 +29,8 @@ hydrates `[data-lucide]` placeholders if the library is ever added.
 ```
 index.html              Home
 about.html              About the company
-services.html           Service pillars + the four deck service groups + rate card
-media-solutions.html    Full media inventory (façade, DOOH, atrium, kiosk, backlit, mobile, outdoor)
+media-solutions.html    Media solutions hub — service pillars, deliverables, format planner
+blog.html               Blog — marketing notes with internal links to the service pages
 work.html               Execution showcase
 contact.html            Lead capture
 brand-activation.html   Service landing page — brand activation / experiential marketing
