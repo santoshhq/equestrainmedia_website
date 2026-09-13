@@ -141,9 +141,10 @@ are used and no client relationship is claimed.
 
 ## Contact form
 
-`contact.html` posts to whatever URL is set on the form's `action` attribute. It currently ships as
-`action="#"`, which makes `js/contact.js` fall back to composing a pre-filled email to
-`sales.equestrian@gmail.com` so no enquiry is lost.
+`contact.html` posts to whatever URL is set on the form's `action` attribute. It is wired to
+Formspree (`https://formspree.io/f/xyeyqkwa`) with a `_subject` hidden field and a `_gotcha`
+honeypot; if the action is ever reset to `#`, `js/contact.js` falls back to composing a
+pre-filled email to `sales.equestrian@gmail.com` so no enquiry is lost.
 
 **To connect a real inbox**, set the action to your endpoint (Formspree, Web3Forms, Netlify Forms,
 or your own handler):
