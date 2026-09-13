@@ -746,8 +746,8 @@
         setError(field, 'Enter a valid email address');
         return false;
       }
-      if (value && field.type === 'tel' && !PHONE_RE.test(value)) {
-        setError(field, 'Enter a valid phone number');
+      if (value && field.type === 'tel' && !/^[0-9]{10}$/.test(value)) {
+        setError(field, 'Enter exactly 10 digits');
         return false;
       }
       setError(field, '');

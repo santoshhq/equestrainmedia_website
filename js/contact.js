@@ -9,6 +9,7 @@
 
 const EMAIL_RE = /^[^\s@]+@[^\s@]+\.[^\s@]{2,}$/;
 const PHONE_RE = /^[+]?[\d\s()-]{8,18}$/;
+const PHONE_DIGITS_RE = /^[0-9]{10}$/;
 
 /** Shows or clears the inline error under a field. */
 function setError(field, message) {
@@ -33,7 +34,7 @@ function validateField(field) {
     setError(field, 'Enter a valid email address');
     return false;
   }
-  if (value && field.type === 'tel' && !PHONE_RE.test(value)) {
+  if (value && field.type === 'tel' && !PHONE_DIGITS_RE.test(value)) {
     setError(field, 'Enter a valid phone number');
     return false;
   }

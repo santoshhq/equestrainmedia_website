@@ -121,8 +121,9 @@
             </div>
             <div class="field">
               <label for="f-phone">Phone <span class="req" aria-hidden="true">*</span></label>
-              <input id="f-phone" name="phone" type="tel" autocomplete="tel" required data-label="Phone"
-                     placeholder="+91 00000 00000">
+              <input id="f-phone" name="phone" type="tel" inputmode="numeric" autocomplete="tel" required
+                data-label="Phone" minlength="10" maxlength="10" pattern="[0-9]{10}"
+                placeholder="Enter 10-digit phone number">
               <p class="field__error" aria-live="polite"></p>
             </div>
             <div class="field">
