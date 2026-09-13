@@ -29,7 +29,7 @@ hydrates `[data-lucide]` placeholders if the library is ever added.
 ```
 index.html              Home
 about.html              About the company
-media-solutions.html    Media solutions hub — service pillars, deliverables, format planner
+media-solutions.html    Media solutions hub — service pillars and deliverables
 blog.html               Blog — marketing notes with internal links to the service pages
 work.html               Execution showcase
 contact.html            Lead capture
