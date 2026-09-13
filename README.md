@@ -31,8 +31,13 @@ index.html              Home
 about.html              About the company
 services.html           Service pillars + the four deck service groups + rate card
 media-solutions.html    Full media inventory (façade, DOOH, atrium, kiosk, backlit, mobile, outdoor)
-work.html               Filterable execution showcase
+work.html               Execution showcase
 contact.html            Lead capture
+brand-activation.html   Service landing page — brand activation / experiential marketing
+outdoor-advertising.html Service landing page — outdoor & billboard advertising
+mall-activation.html    Service landing page — mall activation / mall branding (LuLu Mall)
+btl-marketing.html      Service landing page — BTL marketing campaigns / BTL activation
+robots.txt, sitemap.xml Crawl directives + XML sitemap (canonical host: https://equestrianmedia.in/)
 
 css/
   main.css              Tokens, layout primitives, components, utilities
