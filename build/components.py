@@ -9,9 +9,7 @@ import os
 
 OUT = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
 
-PHONE_RAW = "+918106039919"
-PHONE = "+91 81060 39919"
-EMAIL = "ravi.chander@equestrianmedia.in"
+EMAIL = "sales.equestrian@gmail.com"
 CONTACT = "Ravi Chander"
 
 NAV = [
@@ -81,8 +79,7 @@ def head(title, desc, page, keywords="", extra=""):
     "description": "Hyderabad-based BTL marketing, brand activation and outdoor advertising company delivering on-ground campaigns, mall branding, DOOH, cinema advertising and mobile advertising.",
     "url": "https://www.equestrianmedia.in/",
     "logo": "https://www.equestrianmedia.in/assets/logos/equestrian-horizontal.png",
-    "email": "ravi.chander@equestrianmedia.in",
-    "telephone": "+91-81060-39919",
+    "email": "sales.equestrian@gmail.com",
     "address": { "@type": "PostalAddress", "addressLocality": "Hyderabad", "addressRegion": "Telangana", "addressCountry": "IN" },
     "areaServed": [
       { "@type": "State", "name": "Telangana" },
@@ -92,8 +89,7 @@ def head(title, desc, page, keywords="", extra=""):
       "@type": "ContactPoint",
       "contactType": "sales",
       "name": "Ravi Chander",
-      "telephone": "+91-81060-39919",
-      "email": "ravi.chander@equestrianmedia.in"
+      "email": "sales.equestrian@gmail.com"
     },
     "knowsAbout": ["BTL Marketing", "Brand Activation", "Outdoor Advertising", "Mall Branding", "DOOH Advertising", "Cinema Advertising", "Mobile Advertising"]
   }
@@ -183,7 +179,7 @@ def header(page):
     <div class="mobile-nav__foot">
       <a class="btn btn--block" href="contact.html"><span>Plan your campaign</span></a>
       <p class="mobile-nav__meta">
-        {CONTACT} · <a href="tel:{PHONE_RAW}">{PHONE}</a><br>
+        {CONTACT}<br>
         <a href="mailto:{EMAIL}">{EMAIL}</a>
       </p>
     </div>
@@ -236,7 +232,6 @@ def footer():
           <h3>Contact</h3>
           <ul>
             <li><span>{CONTACT}</span></li>
-            <li><a href="tel:{PHONE_RAW}">{PHONE}</a></li>
             <li><a href="mailto:{EMAIL}">{EMAIL}</a></li>
             <li><span>Hyderabad, Telangana, India</span></li>
           </ul>
@@ -285,7 +280,7 @@ def cta_final():
         <a class="btn btn--lg" href="contact.html" data-cursor="EXPLORE">
           <span>Plan your campaign</span>{arrow()}
         </a>
-        <a class="btn btn--outline btn--lg" href="tel:{PHONE_RAW}"><span>{PHONE}</span></a>
+        <a class="btn btn--outline btn--lg" href="mailto:{EMAIL}"><span>{EMAIL}</span></a>
       </div>
     </div>
   </section>

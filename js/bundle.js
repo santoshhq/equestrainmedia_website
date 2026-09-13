@@ -610,7 +610,7 @@
                 <a class="btn" href="contact.html" data-cursor="EXPLORE">
                   <span>Request a media plan</span>
                 </a>
-                <a class="btn btn--outline" href="tel:+918106039919"><span>Call +91 81060 39919</span></a>
+                <a class="btn btn--outline" href="mailto:sales.equestrian@gmail.com"><span>Email sales.equestrian@gmail.com</span></a>
               </div>
             </div>
           </div>
@@ -717,7 +717,7 @@
 
        The form posts to whatever endpoint is set on the <form action> attribute.
        Until a backend/inbox endpoint is configured, it falls back to composing a
-       pre-filled email to ravi.chander@equestrianmedia.in so no enquiry is lost.
+       pre-filled email to sales.equestrian@gmail.com so no enquiry is lost.
        ========================================================================== */
 
     const EMAIL_RE = /^[^\s@]+@[^\s@]+\.[^\s@]{2,}$/;
@@ -765,7 +765,7 @@
 
       const subject = `Campaign enquiry — ${data.get('company') || data.get('name') || 'New enquiry'}`;
       return (
-        `mailto:ravi.chander@equestrianmedia.in?subject=${encodeURIComponent(subject)}` +
+        `mailto:sales.equestrian@gmail.com?subject=${encodeURIComponent(subject)}` +
         `&body=${encodeURIComponent(lines.join('\n'))}`
       );
     }
@@ -873,7 +873,7 @@
           }
         } catch (error) {
           announce(
-            'We could not send the form just now. Please email ravi.chander@equestrianmedia.in or call +91 81060 39919.'
+            'We could not send the form just now. Please email sales.equestrian@gmail.com.'
           );
         } finally {
           if (submit) {

@@ -138,7 +138,7 @@ are used and no client relationship is claimed.
 
 `contact.html` posts to whatever URL is set on the form's `action` attribute. It currently ships as
 `action="#"`, which makes `js/contact.js` fall back to composing a pre-filled email to
-`ravi.chander@equestrianmedia.in` so no enquiry is lost.
+`sales.equestrian@gmail.com` so no enquiry is lost.
 
 **To connect a real inbox**, set the action to your endpoint (Formspree, Web3Forms, Netlify Forms,
 or your own handler):

@@ -172,7 +172,6 @@ def contact_block(dark=False):
           <dl class="contact-lines u-mt-3">
             <div class="contact-line"><dt>Contact</dt><dd>{CONTACT}</dd></div>
             <div class="contact-line"><dt>Company</dt><dd>Equestrian Media Pvt. Ltd.</dd></div>
-            <div class="contact-line"><dt>Phone</dt><dd><a href="tel:{PHONE_RAW}">{PHONE}</a></dd></div>
             <div class="contact-line"><dt>Email</dt><dd><a href="mailto:{EMAIL}">{EMAIL}</a></dd></div>
             <div class="contact-line"><dt>Markets</dt><dd>Hyderabad · Telangana · Andhra Pradesh</dd></div>
           </dl>
@@ -244,8 +243,8 @@ def contact_block(dark=False):
             <div class="field field--full">
               <button class="btn btn--lg btn--block" type="submit" data-cursor="EXPLORE">Start your campaign</button>
               <p class="form-status" role="status" aria-live="polite" hidden></p>
-              <p class="form-note">We reply to campaign briefs within one working day. Prefer to talk?
-                Call <a href="tel:{PHONE_RAW}" class="link-red">{PHONE}</a>.</p>
+              <p class="form-note">We reply to campaign briefs within one working day. Prefer email?
+                Write to <a href="mailto:{EMAIL}" class="link-red">{EMAIL}</a>.</p>
             </div>
           </form>
         </div>
@@ -1152,7 +1151,7 @@ def build_contact():
     return head(
         "Contact | Request a Media Plan — Equestrian Media Hyderabad",
         "Contact Equestrian Media for BTL marketing, brand activation, mall branding, DOOH, cinema "
-        "and mobile advertising in Hyderabad. Call +91 81060 39919.",
+        "and mobile advertising in Hyderabad. Email sales.equestrian@gmail.com.",
         page,
         keywords="BTL Marketing Hyderabad, Brand Activation Hyderabad, Outdoor Advertising Hyderabad, "
                  "Brand Promotion Hyderabad",
