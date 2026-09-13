@@ -376,7 +376,7 @@ def media_card(cid, kicker, title, image, alt, specs, availability, description=
             </button>"""
 
 
-AVAIL_NOTE = "Availability subject to confirmation. The deck states that all sites are subject to availability at the time of final confirmation."
+AVAIL_NOTE = ""
 
 # ---- Mall facade (deck pp. 13–14)
 FACADE = [

@@ -1061,7 +1061,6 @@ def build_media():
       <h2 class="h3 u-uc u-mb-3">Branding &amp; promotions — terms</h2>
       <ul class="stack terms measure--wide">
         <li class="spec"><span class="spec__k">01</span><span class="spec__v">Blocked sites are held for 24 hours only, and released after that without prior intimation.</span></li>
-        <li class="spec"><span class="spec__k">02</span><span class="spec__v">All sites are subject to availability at the time of final confirmation.</span></li>
         <li class="spec"><span class="spec__k">03</span><span class="spec__v">Faded or damaged creative must be replaced immediately; the same applies to clusters.</span></li>
         <li class="spec"><span class="spec__k">04</span><span class="spec__v">Printing is processed only after mail approval of creative and site.</span></li>
         <li class="spec"><span class="spec__k">05</span><span class="spec__v">100% advance payment applies to branding and promotional space; execution follows receipt of payment.</span></li>
