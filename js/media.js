@@ -38,12 +38,6 @@ function ensureModal() {
           <h2 class="h3" id="media-modal-title" data-modal-title></h2>
           <p class="muted" data-modal-desc style="margin-top:.75rem"></p>
           <div data-modal-specs style="margin-top:1.25rem"></div>
-          <div class="note" data-modal-note style="margin-top:1.5rem">
-            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true">
-              <circle cx="12" cy="12" r="10"/><path d="M12 16v-4M12 8h.01"/>
-            </svg>
-            <span data-modal-note-text></span>
-          </div>
           <div style="margin-top:auto;padding-top:1.75rem;display:flex;flex-wrap:wrap;gap:.75rem">
             <a class="btn" href="contact.html" data-cursor="EXPLORE">
               <span>Request a media plan</span>
@@ -120,10 +114,6 @@ function open(card) {
   specs.innerHTML = '';
   const source = card.querySelector('.spec-list');
   if (source) specs.appendChild(source.cloneNode(true));
-
-  modal.querySelector('[data-modal-note-text]').textContent =
-    card.dataset.note ||
-    'Availability subject to confirmation. Specifications are indicative and taken from the Equestrian Media deck — contact us for current availability and commercial confirmation.';
 
   modal.classList.add('is-open');
   document.body.classList.add('is-locked');
