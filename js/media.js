@@ -42,7 +42,7 @@ function ensureModal() {
             <a class="btn" href="contact.html" data-cursor="EXPLORE">
               <span>Request a media plan</span>
             </a>
-            <a class="btn btn--outline" href="mailto:sales.equestrian@gmail.com"><span>Email sales.equestrian@gmail.com</span></a>
+            <a class="btn btn--outline" href="mailto:sales.equestrianmedia@gmail.com"><span>Email sales.equestrianmedia@gmail.com</span></a>
           </div>
         </div>
       </div>

@@ -4,7 +4,7 @@
 
    The form posts to whatever endpoint is set on the <form action> attribute.
    Until a backend/inbox endpoint is configured, it falls back to composing a
-   pre-filled email to sales.equestrian@gmail.com so no enquiry is lost.
+  pre-filled email to sales.equestrianmedia@gmail.com so no enquiry is lost.
    ========================================================================== */
 
 const EMAIL_RE = /^[^\s@]+@[^\s@]+\.[^\s@]{2,}$/;
@@ -53,7 +53,7 @@ function buildMailto(form, data) {
 
   const subject = `Campaign enquiry — ${data.get('company') || data.get('name') || 'New enquiry'}`;
   return (
-    `mailto:sales.equestrian@gmail.com?subject=${encodeURIComponent(subject)}` +
+    `mailto:sales.equestrianmedia@gmail.com?subject=${encodeURIComponent(subject)}` +
     `&body=${encodeURIComponent(lines.join('\n'))}`
   );
 }
@@ -130,7 +130,7 @@ export function initContactForm() {
       }
     } catch (error) {
       announce(
-        'We could not send the form just now. Please email sales.equestrian@gmail.com.'
+        'We could not send the form just now. Please email sales.equestrianmedia@gmail.com.'
       );
     } finally {
       if (submit) {
