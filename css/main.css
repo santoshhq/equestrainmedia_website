@@ -408,6 +408,19 @@ dl, dd { margin: 0; }
   word-spacing: -0.02em;
   color: var(--ink-70);
 }
+/* Desktop: the intro line runs full width beneath the headline and visual,
+   instead of wrapping in a narrow column under the headline. */
+@media (min-width: 1025px) {
+  .hero__grid { row-gap: 0; }
+  .hero__copy { display: contents; }
+  .hero__copy > * { grid-column: 1; }
+  .hero__copy > .eyebrow { align-self: end; }       /* eyebrow + headline stay together */
+  .hero__copy > .hero__title { align-self: start; }
+  .hero__copy > .hero__sub,
+  .hero__copy > .actions { grid-column: 1 / -1; }
+  .hero__stage { grid-column: 2; grid-row: 1 / span 2; }
+  .hero__sub { max-width: none; }
+}
 .hero__actions, .actions {
   display: flex; flex-wrap: wrap; gap: 0.9rem;
   margin-top: clamp(1.75rem, 3vw, 2.75rem);
@@ -431,6 +444,7 @@ dl, dd { margin: 0; }
      column width — it must never read as clipped against the viewport. */
   width: min(100%, 700px);
   margin-right: 0;          /* right edge meets the content grid, like the text */
+  top: -0.3rem;             /* slight lift; `top` so it never fights GSAP's transform */
   will-change: transform;
 }
 .hero__visual {

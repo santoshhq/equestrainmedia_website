@@ -38,7 +38,7 @@
   /* Hero stacks: statement first, horse below and centred */
   .hero__grid { grid-template-columns: minmax(0, 1fr); gap: 2rem; }
   .hero__stage { min-height: 0; order: 2; justify-content: center; align-self: auto; }
-  .hero__visual-wrap { width: min(94%, 620px); margin-right: 0; }
+  .hero__visual-wrap { width: min(94%, 620px); margin-right: 0; top: 0; }
 
   .split { grid-template-columns: minmax(0, 1fr); gap: 2rem; }
   .section-head { grid-template-columns: minmax(0, 1fr); align-items: start; }

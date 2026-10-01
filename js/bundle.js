@@ -604,7 +604,6 @@
                 <a class="btn" href="contact.html" data-cursor="EXPLORE">
                   <span>Request a media plan</span>
                 </a>
-                <a class="btn btn--outline" href="mailto:sales.equestrianmedia@gmail.com"><span>Email sales.equestrianmedia@gmail.com</span></a>
               </div>
             </div>
           </div>
@@ -706,8 +705,6 @@
        Campaign enquiry form: inline validation and submission handling.
 
        The form posts to whatever endpoint is set on the <form action> attribute.
-       Until a backend/inbox endpoint is configured, it falls back to composing a
-      pre-filled email to sales.equestrianmedia@gmail.com so no enquiry is lost.
        ========================================================================== */
 
     const EMAIL_RE = /^[^\s@]+@[^\s@]+\.[^\s@]{2,}$/;
@@ -742,22 +739,6 @@
       }
       setError(field, '');
       return true;
-    }
-
-    /** Builds the mailto fallback body from the submitted values. */
-    function buildMailto(form, data) {
-      const lines = [];
-      form.querySelectorAll('[name]').forEach((field) => {
-        const label = field.dataset.label || field.name;
-        const value = (data.get(field.name) || '').toString().trim();
-        if (value) lines.push(`${label}: ${value}`);
-      });
-
-      const subject = `Campaign enquiry — ${data.get('company') || data.get('name') || 'New enquiry'}`;
-      return (
-        `mailto:sales.equestrianmedia@gmail.com?subject=${encodeURIComponent(subject)}` +
-        `&body=${encodeURIComponent(lines.join('\n'))}`
-      );
     }
 
     function initContactForm() {
@@ -863,7 +844,7 @@
           }
         } catch (error) {
           announce(
-            'We could not send the form just now. Please email sales.equestrianmedia@gmail.com.'
+            'We could not send the form just now. Please try again in a moment.'
           );
         } finally {
           if (submit) {
