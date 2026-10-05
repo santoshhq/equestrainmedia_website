@@ -53,6 +53,7 @@
       ".   body  body";
     row-gap: 1rem;
     align-items: center;
+    padding-inline: var(--gutter); /* restore .wrap gutter the base padding shorthand zeroes */
   }
   .service__num   { grid-area: num; align-self: start; padding-top: 0.5rem; }
   .service__title { grid-area: title; }
@@ -148,9 +149,9 @@
   .service__num,
   .service__title,
   .service__body { min-width: 0; }
-  .service__num { padding-top: 0; padding-left: 0.25rem; }
+  .service__num { padding-top: 0; }
   .service__title,
-  .service__body { padding-left: 0.25rem; overflow-wrap: anywhere; }
+  .service__body { overflow-wrap: anywhere; }
   .service__arrow { width: 38px; height: 38px; }
   .service:hover .service__title { transform: none; }
 
