@@ -1,0 +1,2 @@
+# SMTP password lives here; never commit it
+mail-config.php

@@ -998,6 +998,19 @@
       if (document.fonts?.ready) {
         document.fonts.ready.then(() => window.ScrollTrigger?.refresh());
       }
+
+      // Lazy images can land after the first measurement and push sections down,
+      // leaving reveals waiting at stale positions. Re-measure once they settle.
+      if (window.ScrollTrigger) {
+        let pending = null;
+        const refreshSoon = () => {
+          clearTimeout(pending);
+          pending = setTimeout(() => window.ScrollTrigger.refresh(), 150);
+        };
+        document.querySelectorAll('img[loading="lazy"]').forEach((img) => {
+          if (!img.complete) img.addEventListener('load', refreshSoon, { once: true });
+        });
+      }
     }
 
     if (document.readyState === 'loading') {
